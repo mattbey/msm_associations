@@ -18,7 +18,7 @@
       <dd><%= @actor.image_url %></dd>
 
       <dt>Number of Characters</dt>
-      <dd><%= Character.where(:actor_id => @actor_id).count %>
+      <dd><%= Character.where(actor_id: @actor.id).count %>
 
 
 
@@ -38,6 +38,13 @@
     </div>
   </div>
 
+  <ul>
+    <% @actor.characters.each do |character| %>
+    <li> <%= character.actor.name %>
+  (<%= character.name %>)
+    </li>
+      <% end %>
+  </ul>
 
   <div class="page-header">
     <h3>Add Character</h3>
